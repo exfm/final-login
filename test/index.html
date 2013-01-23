@@ -6,6 +6,13 @@
     <link rel="stylesheet" href="../node_modules/mocha/mocha.css" type="text/css" charset="utf-8" />
 </head>
 <body>
+
+    <form id="login_form">
+        <input type="text" placeholder="username" id="login_username" />
+        <input type="password" placeholder="password" id="login_password" />
+        <button id="login_button">Submit</button>
+    </form>
+    
     <!-- Required for browser reporter -->
     <div id="mocha"></div>
 
@@ -23,10 +30,11 @@
     </script>
 
     <!-- Include anything you want to test -->
-    <script src="../index.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+    
 
     <!-- Spec files -->
-    <script src="final-login.test.js" type="text/javascript" charset="utf-8"></script>
+    <script src="test.js" type="text/javascript" charset="utf-8"></script>
 
     <!-- run mocha -->
     <script type="text/javascript" charset="utf-8">

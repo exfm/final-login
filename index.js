@@ -1,6 +1,9 @@
-(function(){
-    "use strict";
+"use strict";
 
-    // Attach methods you want to expose to root.
-    var root = (typeof module !== "undefined") ? module.exports : window;
-}());
+var Login = require('./lib/login');
+
+
+module.exports.login = function(form, opts){
+    return new Login(form, opts);  
+};
+    
