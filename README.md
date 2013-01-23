@@ -10,6 +10,5 @@
 
 ## Testing
 
-    git clone 
-    npm install
+    browserify -e test/final-login.test.js -o test/test.js -w -d true
     open test/index.html

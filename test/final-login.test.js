@@ -16,18 +16,18 @@ describe("final-login", function(){
             }
         ).on(
             'success', 
-            function(e){
-                console.log('success', e);
+            function(e, d){
+                console.log('success', e, d);
             }
         ).on(
             'error', 
-            function(e){
-                console.log('error', e);
+            function(e, d){
+                console.log('error', e, d);
             }
         ); 
        
-        
-        
+      
+            
         
         
         
