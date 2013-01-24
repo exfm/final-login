@@ -1,5 +1,6 @@
 "use strict";
 
+
 var Authenticate = require('../index.js'),
     login = Authenticate.login;
     
@@ -14,58 +15,53 @@ function getLogin(done){
     );
 };
 
-function resetLogin(){
-    $('#login_form').off('success error');
+function resetLogin(l){
+    l.form.off('success error submit');
     $('#login_username').val('');
     $('#login_password').val('');
 };
 
 describe("Login", function(){
     it("should throw an error if username is empty", function(done){
-        console.log('run 1');
-        resetLogin();
         var l = getLogin();
         l.form.on(
             'error', 
             function(e, d){
                 assert.equal(d.message, 'username cannot be empty');
+                resetLogin(l);
                 done();
             }
         ).submit();
     });
     it("should throw an error if password is empty", function(done){
-        console.log('run 2');
-        resetLogin();
         $('#login_username').val('testuser');
         var l = getLogin();
         l.form.on(
             'error', 
             function(e, d){
-                console.log(d);
-                assert.equal(d.message, 'passsword cannot be empty');
+                assert.equal(d.message, 'password cannot be empty');
+                resetLogin(l);
                 done();
             }
         ).submit();
     });
     it("should throw an error username and password are incorrect", function(done){
-        console.log('run 3');
         this.timeout(10000);
-        resetLogin();
         $('#login_username').val('testuser');
         $('#login_password').val('testpassword');
         var l = getLogin();
         l.form.on(
             'error', 
             function(e, d){
-                console.log(d);
                 assert.equal(d.message, 'BAD REQUEST');
+                resetLogin(l);
                 done();
             }
         ).submit();
     });
     it("should blur all inputs", function(){
-        console.log('run 4');
         var l = getLogin();
         l.blurAll();
+        //resetLogin(l);
     });
 }); // end Login
