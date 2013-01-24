@@ -25,7 +25,7 @@ describe("Login", function(){
         console.log('run 1');
         resetLogin();
         var l = getLogin();
-        l.on(
+        l.form.on(
             'error', 
             function(e, d){
                 assert.equal(d.message, 'username cannot be empty');
@@ -38,7 +38,7 @@ describe("Login", function(){
         resetLogin();
         $('#login_username').val('testuser');
         var l = getLogin();
-        l.on(
+        l.form.on(
             'error', 
             function(e, d){
                 console.log(d);
@@ -54,7 +54,7 @@ describe("Login", function(){
         $('#login_username').val('testuser');
         $('#login_password').val('testpassword');
         var l = getLogin();
-        l.on(
+        l.form.on(
             'error', 
             function(e, d){
                 console.log(d);
@@ -62,5 +62,10 @@ describe("Login", function(){
                 done();
             }
         ).submit();
+    });
+    it("should blur all inputs", function(){
+        console.log('run 4');
+        var l = getLogin();
+        l.blurAll();
     });
 }); // end Login
